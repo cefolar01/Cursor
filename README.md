@@ -1,4 +1,4 @@
-# Implementation Team
+# Implementation Team — Agents
 
 Cursor agent rules for a small software implementation team that delivers **child-welfare / foster-care / juvenile-justice** software from requirements through a verified AWS release.
 
@@ -56,10 +56,8 @@ Paul does not replace pipeline roles. He tracks progress, prioritizes, and escal
 
 Don’s source checklist is [`.cursor/rules/aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) (`alwaysApply: true`). Use it so releases:
 
-- **Succeed** — immutable artifacts, reviewed plans, health-gated rollouts, known rollback
-- **Stay compliant** — least-privilege IAM, secrets out of git, encryption, no public data planes
-- **Avoid downtime** — rolling/blue-green/canary deploys, backward-compatible changes, and no surprise outages of shared dev/staging/CI
+Picks up Barb’s **Slack user-story tasks** from the **project-solution** workspace (backed by her work packages) and turns them into working code; also takes **Paul’s assignments of approved tasks**. Hands **CI-green, immutable artifacts** to Don. Detailed scope, rules, and done criteria still to be defined (scaffold).
 
 Treat the **Hard stops** section as a merge gate. If a change hits one, split the work or schedule a window instead of forcing the deploy.
 
-These rules do not replace IAM permission boundaries, SCPs, AWS Config, or your change-management process. They tell the agent (and the operator) what not to skip.
+**PMP-certified** PM: tracks **risks**, **issues**, and **ETC**; posts **daily status** to **project-solution**; polls the task list every **15 minutes** for **approved** work and **assigns approved tasks to Dave Dev**. Logs risks/issues in **Project Risks and Issues**. Oversees Barb → Dave → Don → Tony without authoring packages, code, deploys, or tests. Full rules in his rule file.
