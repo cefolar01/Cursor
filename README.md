@@ -36,10 +36,10 @@ Paul does not replace pipeline roles; he tracks risks/issues/ETC, reports daily 
 | 1 | Barb BA | Business Analyst | [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc) | **Populated** |
 | 2 | Dave Dev | Developer | [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc) | Scaffold |
 | 3 | Don DevOp | DevOps (AWS) | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | **Populated** |
-| 4 | Tony Tester | Tester | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) | Scaffold |
+| 4 | Tony Tester | Tester | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) | **Populated** |
 | — | Paul PM | Project Manager (PMP) | [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc) | **Populated** |
 
-**Rules status:** Barb, Don, and Paul have full operating rules. Dave and Tony are scaffolds (purpose + collaboration stubs) until Rich fills them in.
+**Rules status:** Barb, Don, Tony, and Paul have full operating rules. Dave is a scaffold (purpose + collaboration stubs) until Rich fills it in.
 
 ## Per-agent summaries
 
@@ -57,7 +57,7 @@ Deploys app and infra to **AWS** under the [AWS Deployment Rules](.cursor/rules/
 
 ### Tony Tester — [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc)
 
-Validates the release against Barb’s requirements: turns Barb’s **test scenarios** into scripts and runs them against Don’s **deployed** environment using deploy evidence. Detailed scope, rules, and done criteria still to be defined (scaffold).
+Turns Barb’s **test scenarios** into granular **test cases** (tasks associated to the main user story in **project-solution**), executes them against Don’s **deployed** environment using deploy evidence, and records discrete **pass / fail / block**—covering happy path and anomaly paths—**before** sign-off or closing the Slack story as complete. Synthetic/redacted data only. Full rules in his rule file.
 
 ### Paul PM — [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc)
 
