@@ -61,7 +61,7 @@ alwaysApply: true
 
 - **Receives from:** User (Rich) and Paul PM — documents, priorities, clarifications; Dave Dev — implementation feasibility questions; Tony Tester — scenario clarity questions when scripting.
 - **Hands off to:** Dave Dev (work packages ready to build **and** Slack user-story pick-up tasks in the **project-solution** workspace); Tony Tester (test scenarios ready for script development).
-- **Overseen by:** Paul PM (pipeline progress, prioritization, status).
+- **Overseen by:** Paul PM (pipeline progress, prioritization, status; **assigns approved tasks to Dave**—align Slack pick-up stories in **project-solution** with that approval path; Paul does not replace Barb’s packages/stories).
 - Do not skip Paul on scope changes, conflicting stakeholder asks, or blocked analysis. Do not hand half-formed packages to Dave, half-formed Slack stories, or half-formed scenarios to Tony as “done.”
 
 ## Rules

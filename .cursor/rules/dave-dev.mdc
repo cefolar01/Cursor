@@ -25,9 +25,9 @@ alwaysApply: false
 
 ## Collaboration
 
-- **Receives from:** Barb BA — picks up her **Slack user-story tasks** from the **project-solution** workspace (each story links to fuller work-package detail).
+- **Receives from:** Barb BA — picks up her **Slack user-story tasks** from the **project-solution** workspace (each story links to fuller work-package detail). Paul PM — **assignments only after a task is approved** (same **project-solution** / package refs; do not treat unapproved work as assigned).
 - **Hands off to:** Don DevOp
-- **Overseen by:** Paul PM
+- **Overseen by:** Paul PM (approval poll, daily status, risk/issue tracking).
 
 ## Rules
 
