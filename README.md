@@ -2,7 +2,7 @@
 
 How the Implementation Team works: who does what, how work moves, and where each agent’s rules live.
 
-**Purpose:** Deliver child-welfare / foster-care / juvenile-justice software from requirements through verified release—with clear handoffs, least-privilege data handling, and no skipped quality gates.
+**Purpose:** Deliver child-welfare / foster-care / juvenile-justice software from requirements through verified release—with clear handoffs, least-privilege data handling, and no skipped quality gates. **Team-Docs** (cross-cutting) packages design docs, test execution reports, and monthly status for proof of work and invoicing.
 
 ## How they execute
 
@@ -14,7 +14,8 @@ Rich / intake
      │                                                              ▲                                                      ▲
      └──test scenarios──────────────────────────────────────────────┼──────────────────────────────────────────────────────┘
                                                                     │
-                                                         Paul PM (oversees status, priorities, blockers)
+                         Paul PM (oversees status, priorities, blockers)
+                         Team-Docs (cross-cutting: design docs, test reports, monthly status for proof/invoicing)
 ```
 
 | Handoff | From → To | What moves |
@@ -26,8 +27,13 @@ Rich / intake
 | Deploy evidence | Don → Tony | Verified serving version, health/soak proof, change record, rollback path |
 | Status / progress | All → Paul | Completions, blockers, decisions needed; Paul keeps the pipeline moving |
 | Approved → assign | Paul → Dave | After a task is **approved**, Paul assigns it to Dave (aligned with Barb’s **project-solution** pick-up stories) |
+| Design source | Barb → Team-Docs | Work packages / requirements for **design documents** (proof of work) |
+| Execution results | Tony → Team-Docs | Pass/fail/block cases and evidence for **test execution reports** |
+| Monthly rollup input | Paul → Team-Docs | Completions, ETC, blockers, risk/issue highlights for **monthly status reports** |
 
 Paul does not replace pipeline roles; he tracks risks/issues/ETC, reports daily to **project-solution**, assigns only **approved** work to Dave, and escalates conflicts. Agents escalate to Paul when scope conflicts, policy is missing, or a handoff is blocked.
+
+**Team-Docs** is cross-cutting (like Paul)—not a sequential step between Barb → Dave → Don → Tony. It packages Barb, Tony, and Paul outputs into client/billing evidence artifacts.
 
 ## Agents at a glance
 
@@ -38,8 +44,9 @@ Paul does not replace pipeline roles; he tracks risks/issues/ETC, reports daily 
 | 3 | Don DevOp | DevOps (AWS) | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | **Populated** |
 | 4 | Tony Tester | Tester | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) | **Populated** |
 | — | Paul PM | Project Manager (PMP) | [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc) | **Populated** |
+| — | Team-Docs | Deliverable docs (proof / invoicing) | [`.cursor/rules/team-docs.mdc`](.cursor/rules/team-docs.mdc) | **Populated** |
 
-**Rules status:** Barb, Don, Tony, and Paul have full operating rules. Dave is a scaffold (purpose + collaboration stubs) until Rich fills it in.
+**Rules status:** Barb, Don, Tony, Paul, and Team-Docs have full operating rules. Dave is a scaffold (purpose + collaboration stubs) until Rich fills it in.
 
 ## Per-agent summaries
 
@@ -61,4 +68,8 @@ Turns Barb’s **test scenarios** into granular **test cases** (tasks associated
 
 ### Paul PM — [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc)
 
-**PMP-certified** PM: tracks **risks**, **issues**, and **ETC**; posts **daily status** to **project-solution**; polls the task list every **15 minutes** for **approved** work and **assigns approved tasks to Dave Dev**. Logs risks/issues in **Project Risks and Issues**. Oversees Barb → Dave → Don → Tony without authoring packages, code, deploys, or tests. Full rules in his rule file.
+**PMP-certified** PM: tracks **risks**, **issues**, and **ETC**; posts **daily status** to **project-solution**; polls the task list every **15 minutes** for **approved** work and **assigns approved tasks to Dave Dev**. Logs risks/issues in **Project Risks and Issues**. Oversees Barb → Dave → Don → Tony without authoring packages, code, deploys, or tests. Supplies monthly rollup input to **Team-Docs**. Full rules in his rule file.
+
+### Team-Docs — [`.cursor/rules/team-docs.mdc`](.cursor/rules/team-docs.mdc)
+
+Cross-cutting (like Paul): produces **design documents** (from Barb), **test execution reports** (from Tony), and **monthly status reports** (with Paul’s input) for **proof of work and invoicing**. Not a sequential pipeline step. Synthetic/redacted only; references **project-solution** / **Project Risks and Issues** by name without inventing credentials. Full rules in the rule file.

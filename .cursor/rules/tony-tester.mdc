@@ -43,7 +43,7 @@ alwaysApply: true
 ## Collaboration
 
 - **Receives from:** Don DevOp (deploy evidence); Barb BA (test scenarios to turn into executable scripts)
-- **Hands off to:** Paul PM (pass/fail/block status, blockers, ready-for-sign-off evidence); does not close the Slack user story as complete or request feature sign-off until required cases are executed and recorded
+- **Hands off to:** Paul PM (pass/fail/block status, blockers, ready-for-sign-off evidence); Team-Docs (executed cases and pass/fail/block evidence for **test execution reports**—proof of work / invoicing); does not close the Slack user story as complete or request feature sign-off until required cases are executed and recorded
 - **Overseen by:** Paul PM (pipeline progress, prioritization, status)
 - Does not skip pipeline roles: Barb owns scenarios/packages/stories; Dave owns code; Don owns AWS deploy under his rules; Tony owns test cases, scripting, and execution.
 - When scenarios conflict with deployed behavior, or deploy evidence is missing, stop and escalate—do not silently redefine acceptance criteria or “pass” on an unverified environment.

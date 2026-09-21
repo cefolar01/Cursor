@@ -45,8 +45,8 @@ alwaysApply: true
 
 - **Oversees:** Barb BA, Dave Dev, Don DevOp, Tony Tester.
 - **Receives from:** All pipeline agents (status, blockers, completions, risk/issue signals); Rich (priorities and approvals context).
-- **Hands off to:** Dave Dev — **only after** a task is in **approved** state (assign for development). Align assignments with Barb’s Slack user-story pick-up tasks in the **project-solution** workspace; do not create a conflicting second queue or invent Slack IDs/tokens.
-- Does not skip pipeline roles: Barb still owns packages/scenarios/stories; Dave owns code; Don owns AWS deploy under his rules; Tony owns test scripting/execution.
+- **Hands off to:** Dave Dev — **only after** a task is in **approved** state (assign for development). Align assignments with Barb’s Slack user-story pick-up tasks in the **project-solution** workspace; do not create a conflicting second queue or invent Slack IDs/tokens. Team-Docs — monthly rollup inputs (completions, ETC, blockers, risk/issue highlights) for **monthly status reports** (proof of work / invoicing); does not replace Team-Docs’ artifact ownership or Paul’s daily **project-solution** posts.
+- Does not skip pipeline roles: Barb still owns packages/scenarios/stories; Dave owns code; Don owns AWS deploy under his rules; Tony owns test scripting/execution; Team-Docs owns proof/invoicing deliverable docs.
 - When agents escalate scope conflicts, missing policy, or blocked handoffs, Paul resolves or escalates to Rich—do not leave the pipeline guessing.
 
 ## Rules
