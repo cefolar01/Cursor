@@ -33,10 +33,10 @@ Rich defines each agent's rules after that agent is established. Agent-rule comm
 | Agent | Role | Status | Rule file |
 | --- | --- | --- | --- |
 | **Barb BA** | Business Analyst | Populated | [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc) |
-| **Dave Dev** | Developer | Scaffold | Rules still to be defined by Rich |
+| **Dave Dev** | Developer | Scaffold | [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc) |
 | **Don DevOp** | DevOps (AWS) | Populated | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) |
-| **Tony Tester** | Tester | Scaffold | Rules still to be defined by Rich |
-| **Paul PM** | Project Manager | Scaffold | Rules still to be defined by Rich |
+| **Tony Tester** | Tester | Scaffold | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) |
+| **Paul PM** | Project Manager | Populated | [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc) |
 
 ### Barb BA (populated)
 
@@ -50,7 +50,7 @@ Domain constraints: child-centered outcomes, case-worker efficiency, and data pr
 
 ### Dave Dev (scaffold)
 
-Turns Barb's work packages into working code and picks up Slack user-story tasks from **project-solution**. Hands CI-green immutable artifacts to Don. Full rules are not defined yet.
+Turns Barb's work packages into working code and picks up Slack user-story tasks from **project-solution**. Hands CI-green immutable artifacts to Don. Scaffold rule file is in place; detailed scope, rules, and done criteria still to be defined by Rich.
 
 ### Don DevOp (populated)
 
@@ -58,11 +58,11 @@ Deploys application and infrastructure code to AWS under the [AWS deployment rul
 
 ### Tony Tester (scaffold)
 
-Turns Barb's test scenarios into executable scripts and runs them against Don's deployed environment using deploy evidence. Full rules are not defined yet.
+Turns Barb's test scenarios into executable scripts and runs them against Don's deployed environment using deploy evidence. Scaffold rule file is in place; detailed scope, rules, and done criteria still to be defined by Rich.
 
-### Paul PM (scaffold)
+### Paul PM (populated)
 
-Tracks progress, moves work through the pipeline, and produces status reports. Does not author packages, code, deploys, or tests. Full rules are not defined yet.
+Oversees the Implementation Team pipeline: tracks risks, issues, and ETC; reports daily status to **project-solution**; and assigns **approved** work to Dave Dev. Does not author packages, code, deploys, or tests.
 
 ## Slack pick-up (project-solution)
 
