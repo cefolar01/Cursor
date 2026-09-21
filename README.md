@@ -1,96 +1,64 @@
-# Implementation Team
+# Implementation Team — Agents
 
-Cursor project rules for a small software implementation team that delivers child-welfare, foster-care, and juvenile-justice software from requirements through a verified release.
+How the Implementation Team works: who does what, how work moves, and where each agent’s rules live.
 
-Purpose: clear handoffs, least-privilege handling of sensitive child and family data, and no skipped quality gates. Best value for the child is the goal; case-worker daily efficiency is how the team gets there.
+**Purpose:** Deliver child-welfare / foster-care / juvenile-justice software from requirements through verified release—with clear handoffs, least-privilege data handling, and no skipped quality gates.
 
 ## How they execute
 
 ```
 Rich / intake
-    │
-    ▼
-Barb BA ── work packages + Slack user stories ──► Dave Dev ── CI-green artifacts ──► Don DevOp ── deploy evidence ──► Tony Tester
-    │                                                                                         ▲
-    └── test scenarios ───────────────────────────────────────────────────────────────────────┘
-
-Paul PM oversees progress, priorities, blockers, and status.
+     │
+     ▼
+ Barb BA ──work packages + Slack user stories (project-solution)──► Dave Dev ──CI-green artifacts──► Don DevOp ──deploy evidence──► Tony Tester
+     │                                                              ▲                                                      ▲
+     └──test scenarios──────────────────────────────────────────────┼──────────────────────────────────────────────────────┘
+                                                                    │
+                                                         Paul PM (oversees status, priorities, blockers)
 ```
 
 | Handoff | From → To | What moves |
-| --- | --- | --- |
-| Work packages | Barb → Dave | Buildable slices (problem, scope, actors, ACs, data-sensitivity notes) |
-| Slack user stories | Barb → Dave via **project-solution** | Claimable pick-up tasks; the work package stays the source of truth |
-| Test scenarios | Barb → Tony | Business/workflow scenarios, not executable scripts |
-| Deployable artifacts | Dave → Don | CI-green git SHA + immutable artifact (never `:latest`) |
-| Deploy evidence | Don → Tony | Serving version, health/soak, change record, rollback path |
-| Status | All → Paul | Completions, blockers, decisions needed |
+|---------|-----------|------------|
+| Work packages | Barb → Dave | Buildable slices: problem, scope, actors, requirements, acceptance criteria, data-sensitivity notes |
+| Slack user-story tasks | Barb → Dave | Pick-up tasks in the **project-solution** workspace: As a… / I want… / So that…, acceptance criteria, links/refs to package detail (synthetic/redacted only) |
+| Test scenarios | Barb → Tony | Business-level scenarios mapped to acceptance criteria (not executable scripts) |
+| Deployable artifacts | Dave → Don | CI-green git SHA + immutable artifact (image digest, AMI, Lambda version—never `:latest`) |
+| Deploy evidence | Don → Tony | Verified serving version, health/soak proof, change record, rollback path |
+| Status / progress | All → Paul | Completions, blockers, decisions needed; Paul keeps the pipeline moving |
+| Approved → assign | Paul → Dave | After a task is **approved**, Paul assigns it to Dave (aligned with Barb’s **project-solution** pick-up stories) |
 
-Rich defines each agent's rules after that agent is established. Agent-rule commits go on `main` unless Rich asks otherwise.
+Paul does not replace pipeline roles; he tracks risks/issues/ETC, reports daily to **project-solution**, assigns only **approved** work to Dave, and escalates conflicts. Agents escalate to Paul when scope conflicts, policy is missing, or a handoff is blocked.
 
-## Agents
+## Agents at a glance
 
-| Agent | Role | Status | Rule file |
-| --- | --- | --- | --- |
-| **Barb BA** | Business Analyst | Populated | [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc) |
-| **Dave Dev** | Developer | Scaffold | [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc) |
-| **Don DevOp** | DevOps (AWS) | Populated | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) |
-| **Tony Tester** | Tester | Scaffold | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) |
-| **Paul PM** | Project Manager | Populated | [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc) |
+| Order | Agent | Role | Rule file | Status |
+|------:|-------|------|-----------|--------|
+| 1 | Barb BA | Business Analyst | [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc) | **Populated** |
+| 2 | Dave Dev | Developer | [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc) | Scaffold |
+| 3 | Don DevOp | DevOps (AWS) | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | **Populated** |
+| 4 | Tony Tester | Tester | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) | Scaffold |
+| — | Paul PM | Project Manager (PMP) | [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc) | **Populated** |
 
-### Barb BA (populated)
+**Rules status:** Barb, Don, and Paul have full operating rules. Dave and Tony are scaffolds (purpose + collaboration stubs) until Rich fills them in.
 
-Gathers requirements from business documents, forms, process maps, and other intake. Outputs:
+## Per-agent summaries
 
-- **Work packages** Dave can implement without guessing policy
-- **User-story pick-up tasks** in the **project-solution** Slack workspace (`As a` / `I want` / `So that` + acceptance criteria + link to the package)
-- **Test scenarios** Tony can turn into executable scripts
+### Barb BA — [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc)
 
-Domain constraints: child-centered outcomes, case-worker efficiency, and data protection (least privilege, need-to-know, minimization, auditability; synthetic or redacted samples only; no invented statutes).
+Turns user docs/forms/process maps into **work packages** for Dave, **Slack user-story pick-up tasks** in the **project-solution** workspace, and **test scenarios** for Tony. Domain: government child-related functions. Optimizes for child outcomes and case-worker efficiency; requires least privilege, need-to-know, minimization, and auditability on sensitive data (no real identifiers in Slack). Does not write code or executable tests.
 
-### Dave Dev (scaffold)
+### Dave Dev — [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc)
 
-Turns Barb's work packages into working code and picks up Slack user-story tasks from **project-solution**. Hands CI-green immutable artifacts to Don. Scaffold rule file is in place; detailed scope, rules, and done criteria still to be defined by Rich.
+Picks up Barb’s **Slack user-story tasks** from the **project-solution** workspace (backed by her work packages) and turns them into working code; also takes **Paul’s assignments of approved tasks**. Hands **CI-green, immutable artifacts** to Don. Detailed scope, rules, and done criteria still to be defined (scaffold).
 
-### Don DevOp (populated)
+### Don DevOp — [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc)
 
-Deploys application and infrastructure code to AWS under the [AWS deployment rules](.cursor/rules/aws-deployment.mdc). Receives CI-green artifacts from Dave; hands deploy evidence to Tony. Does not invent procedures beyond those rules.
+Deploys app and infra to **AWS** under the [AWS Deployment Rules](.cursor/rules/aws-deployment.mdc): confirm account/region/env/role before mutate; plan-then-apply; immutable CI-green artifacts; security guardrails on; rolling/blue-green/canary with rollback ready; hands **deploy evidence** to Tony. Full rules live in those rule files—not duplicated here.
 
-### Tony Tester (scaffold)
+### Tony Tester — [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc)
 
-Turns Barb's test scenarios into executable scripts and runs them against Don's deployed environment using deploy evidence. Scaffold rule file is in place; detailed scope, rules, and done criteria still to be defined by Rich.
+Validates the release against Barb’s requirements: turns Barb’s **test scenarios** into scripts and runs them against Don’s **deployed** environment using deploy evidence. Detailed scope, rules, and done criteria still to be defined (scaffold).
 
-### Paul PM (populated)
+### Paul PM — [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc)
 
-Oversees the Implementation Team pipeline: tracks risks, issues, and ETC; reports daily status to **project-solution**; and assigns **approved** work to Dave Dev. Does not author packages, code, deploys, or tests.
-
-## Slack pick-up (project-solution)
-
-Barb posts one user-story task per coherent Dave slice in the **project-solution** workspace. Slack is the claimable surface; the work package holds the detail. Do not invent channel IDs or bot credentials. Never post real child, family, or case identifiers.
-
-## AWS deployment rules
-
-Don's always-applied checklist so releases succeed, stay compliant, and avoid unplanned downtime.
-
-The rule file is always applied. Use it as a pre-flight checklist so releases:
-
-- **Succeed** — immutable artifacts, reviewed plans, health-gated rollouts, known rollback
-- **Stay compliant** — least-privilege IAM, secrets out of git, encryption, no public data planes
-- **Avoid downtime** — rolling/blue-green/canary deploys, backward-compatible changes, and no surprise outages of shared dev/staging/CI
-
-| File | When it applies |
-| --- | --- |
-| [`.cursor/rules/aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) | Every Agent chat (`alwaysApply: true`) |
-| [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | Every Agent chat (`alwaysApply: true`) |
-
-### How to use
-
-1. Keep `.cursor/rules/aws-deployment.mdc` in the repo you deploy from (or copy it into each service repo).
-2. In Cursor Agent, ask for a deploy plan, Terraform/CDK change, pipeline edit, or incident hotfix. The rule is injected automatically.
-3. Treat the **Hard stops** section as a merge gate. If a change hits one, split the work or schedule a window instead of forcing the deploy.
-
-To apply the AWS rule only when you `@`-mention it, set `alwaysApply: false` in the frontmatter and drop the description.
-
-### What this is not
-
-These rules do not replace IAM permission boundaries, SCPs, AWS Config, or your change-management process. They tell the agent (and the operator) what not to skip.
+**PMP-certified** PM: tracks **risks**, **issues**, and **ETC**; posts **daily status** to **project-solution**; polls the task list every **15 minutes** for **approved** work and **assigns approved tasks to Dave Dev**. Logs risks/issues in **Project Risks and Issues**. Oversees Barb → Dave → Don → Tony without authoring packages, code, deploys, or tests. Full rules in his rule file.
