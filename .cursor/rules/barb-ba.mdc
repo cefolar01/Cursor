@@ -137,6 +137,114 @@ alwaysApply: true
 - Fabricated regulatory citations or unverified compliance claims.
 - Scope that abandons child welfare / foster care / juvenile justice for an unrelated domain without user direction.
 
+### 9. Public reference sources (process / design only)
+
+- Use the **Public reference sources** catalog below when checking public agency process language, program structure, or publicly posted guidance for child welfare / CPS / foster care design decisions.
+- These sites are **public reference sources**—not confidential case systems and not a source of real case, child, or family identifiers.
+- Still **do not invent statute or regulation numbers**. When a public page informs a requirement or process note, **cite the public source** (agency name + URL) in the work package / open questions; do not paste sensitive examples from any site into packages or Slack.
+- Public site content **does not authorize** putting real case identifiers into work packages, test scenarios, or **project-solution** Slack tasks—synthetic/redacted only.
+- Prefer the jurisdiction’s official child-welfare / CPS landing page when distinct from a general human-services portal. URLs change; if a link is stale, re-check via Child Welfare Information Gateway’s state/territory directory or the agency’s current `.gov` homepage rather than guessing.
+
+## Public reference sources
+
+Curated **official public** U.S. child welfare / child protective services (or equivalent) websites Barb may use for process and design reference. Prefer government agency pages. Compiled for practical use (federal + 50 states + DC + territories with a verifiable public site). Last reviewed: 2026-09-22.
+
+**How to use:** public process/design reference only · cite the source when relied on · no invented statute numbers · synthetic/redacted only in work products · never treat these pages as authority to include real case identifiers in packages or Slack.
+
+### Federal (primary)
+
+| Jurisdiction | Agency / resource | URL |
+|--------------|-------------------|-----|
+| Federal | Children’s Bureau (ACF / HHS) | https://acf.gov/cb |
+| Federal | Child Welfare Information Gateway | https://www.childwelfare.gov/ |
+| Federal | CWIG — State, Territory, and Tribal Resources | https://www.childwelfare.gov/resources/states-territories-tribes/ |
+| Federal | ACF — State Human Services Agencies directory | https://acf.gov/state-human-services-agencies |
+
+### Federal / national gateways (secondary)
+
+| Jurisdiction | Agency / resource | URL |
+|--------------|-------------------|-----|
+| Federal | Childcare.gov — Report Child Abuse and Neglect (state/territory reporting links) | https://childcare.gov/report-child-abuse-neglect |
+| Federal | CWIG — State Contacts & Related Organizations | https://www.childwelfare.gov/resources/states-territories-tribes/related-organizations/ |
+
+### States and District of Columbia
+
+| Jurisdiction | Agency / name | URL |
+|--------------|---------------|-----|
+| Alabama | Department of Human Resources — Child Protective Services | https://dhr.alabama.gov/child-protective-services/ |
+| Alaska | Office of Children’s Services (DFCS) | https://dfcs.alaska.gov/office-of-childrens-services/ |
+| Arizona | Department of Child Safety | https://dcs.az.gov/ |
+| Arkansas | Division of Children and Family Services (DHS) | https://humanservices.arkansas.gov/divisions-shared-services/children-family-services/ |
+| California | CDSS — Child Welfare Protection | https://www.cdss.ca.gov/inforesources/child-welfare-protection |
+| Colorado | Colorado Department of Human Services — Child Welfare | https://cdhs.colorado.gov/our-services/child-and-family-services/child-welfare |
+| Connecticut | Department of Children and Families | https://portal.ct.gov/DCF |
+| Delaware | Department of Services for Children, Youth and Their Families | https://kids.delaware.gov/ |
+| District of Columbia | Child and Family Services Agency (CFSA) | https://cfsa.dc.gov/ |
+| Florida | Department of Children and Families — Child & Family Services | https://www.myflfamilies.com/services/child-family |
+| Georgia | Division of Family & Children Services (DFCS) | https://dfcs.georgia.gov/ |
+| Hawaii | DHS — Child Welfare Services | https://humanservices.hawaii.gov/ssd/home/child-welfare-services/ |
+| Idaho | Department of Health and Welfare — Children, Families & Older Adults | https://healthandwelfare.idaho.gov/services-programs/children-families-older-adults |
+| Illinois | Department of Children and Family Services (DCFS) | https://dcfs.illinois.gov/ |
+| Indiana | Department of Child Services (DCS) | https://www.in.gov/dcs/ |
+| Iowa | HHS — Child Protective Services | https://hhs.iowa.gov/programs/CPS |
+| Kansas | Department for Children and Families (DCF) | https://www.dcf.ks.gov/ |
+| Kentucky | Department for Community Based Services (CHFS / DCBS) | https://www.chfs.ky.gov/agencies/dcbs/Pages/default.aspx |
+| Louisiana | Department of Children and Family Services (DCFS) | https://www.dcfs.louisiana.gov/ |
+| Maine | Office of Child and Family Services (OCFS) | https://www.maine.gov/dhhs/ocfs |
+| Maryland | DHS — Child Protective Services | https://dhs.maryland.gov/child-protective-services/ |
+| Massachusetts | Department of Children and Families (DCF) | https://www.mass.gov/orgs/massachusetts-department-of-children-families |
+| Michigan | MDHHS — Abuse & Neglect / child welfare | https://www.michigan.gov/mdhhs/adult-child-serv/abuse-neglect |
+| Minnesota | Department of Children, Youth, and Families (DCYF) | https://dcyf.mn.gov/ |
+| Mississippi | Department of Child Protection Services (MDCPS) | https://www.mdcps.ms.gov/ |
+| Missouri | DSS — Children’s Division | https://dss.mo.gov/cd/ |
+| Montana | Child and Family Services Division (DPHHS) | https://dphhs.mt.gov/cfsd/ |
+| Nebraska | DHHS — Children and Family Services | https://dhhs.ne.gov/Pages/Children-and-Family-Services.aspx |
+| Nevada | Division of Child and Family Services (DCFS) | https://dcfs.nv.gov/ |
+| New Hampshire | DCYF — Child Protection & Juvenile Justice | https://www.dhhs.nh.gov/programs-services/child-protection-juvenile-justice |
+| New Jersey | Department of Children and Families (DCF) | https://www.nj.gov/dcf/ |
+| New Mexico | Children, Youth and Families Department (CYFD) | https://www.cyfd.nm.gov/ |
+| New York | Office of Children and Family Services (OCFS) | https://ocfs.ny.gov/ |
+| North Carolina | NCDHHS — Child Welfare Services | https://www.ncdhhs.gov/divisions/social-services/child-welfare-services |
+| North Dakota | HHS — Children and Family Services | https://www.hhs.nd.gov/cfs |
+| Ohio | Department of Children and Youth (DCY) | https://childrenandyouth.ohio.gov/ |
+| Oklahoma | OKDHS — Child Welfare Services | https://oklahoma.gov/okdhs/services/cws.html |
+| Oregon | ODHS — Child Welfare Program | https://www.oregon.gov/odhs/agency/pages/cw.aspx |
+| Pennsylvania | Department of Human Services (DHS) | https://www.pa.gov/agencies/dhs |
+| Rhode Island | Department of Children, Youth and Families (DCYF) | https://dcyf.ri.gov/ |
+| South Carolina | DSS — Child Well-Being | https://dss.sc.gov/child-well-being/ |
+| South Dakota | DSS — Child Protection Services | https://dss.sd.gov/childprotection/ |
+| Tennessee | Department of Children’s Services (DCS) | https://www.tn.gov/dcs/ |
+| Texas | Department of Family and Protective Services (DFPS) | https://www.dfps.texas.gov/ |
+| Utah | Division of Child and Family Services (DCFS) | https://dcfs.utah.gov/ |
+| Vermont | Department for Children and Families (DCF) | https://dcf.vermont.gov/ |
+| Virginia | VDSS — Child Protective Services | https://www.dss.virginia.gov/supporting-families/child-protective-services/ |
+| Washington | Department of Children, Youth, and Families (DCYF) | https://www.dcyf.wa.gov/ |
+| West Virginia | Bureau for Social Services (DoHS) | https://bss.wv.gov/ |
+| Wisconsin | Department of Children and Families (DCF) | https://dcf.wisconsin.gov/ |
+| Wyoming | Department of Family Services (DFS) | https://dfs.wyo.gov/ |
+
+### U.S. territories
+
+| Jurisdiction | Agency / name | URL |
+|--------------|---------------|-----|
+| Puerto Rico | ADFAN — Administración Auxiliar de Protección Social | https://adfan.pr.gov/AdministracionesAuxiliares/ProteccionSocial/Pages/default.aspx |
+| Guam | DPHSS — Bureau of Social Services Administration (BOSSA) | https://dphss.guam.gov/bureau-social-services-administration-bossa |
+| U.S. Virgin Islands | DHS — Intake & Emergency Services (CPS) | https://dhs.vi.gov/intake-emergency-services/ |
+| American Samoa | Department of Human & Social Services (DHSS) | http://www.dhss.as/ |
+| Northern Mariana Islands (CNMI) | Division of Youth Services (DCCA) — includes Child Protective Services | https://www.dys.gov.mp/ |
+
+### Verification notes (honest gaps)
+
+- **Coverage:** Federal primary (4) + secondary gateways (2); **51** state/DC rows; **5** territories with a verifiable official public site.
+- **New York (OCFS):** `https://ocfs.ny.gov/` is the widely cited official agency site (ACF / public directories). Live page fetch from this environment was intermittent (connection errors / 500); treat as the correct official URL and re-check in-browser if needed.
+- **Ohio (DCY):** `https://childrenandyouth.ohio.gov/` content verified (Department of Children and Youth). Some automated clients receive HTTP 404; confirm in a normal browser if a link appears broken.
+- **American Samoa:** Public site responded on **HTTP** (`http://www.dhss.as/`); HTTPS did not respond from this environment. Page content confirms children/family welfare including protective services.
+- **CNMI (`dys.gov.mp`):** Page content previously retrieved successfully; some clients receive HTTP 406—retry in a browser if needed.
+- **Bot-protected portals:** Arizona (`dcs.az.gov`), Arkansas, Colorado, Louisiana, Massachusetts, New Hampshire, Rhode Island, and Utah official URLs are listed from government sources / successful content checks; some return HTTP 403 to automated fetchers. Prefer opening in a browser rather than inventing alternate URLs.
+- **Pennsylvania:** County-administered child welfare under state DHS oversight; listed URL is the state DHS public homepage (no separate stable statewide CPS-only homepage verified as distinct).
+- **Minnesota:** Child welfare programs moved under the Department of Children, Youth, and Families (`dcyf.mn.gov`); county/Tribal delivery still applies for many CPS functions.
+- Do **not** invent replacement URLs. If a link fails, use CWIG State/Territory Resources or ACF’s state human-services directory to locate the current official page.
+
 ## Done criteria
 
 - Work package(s) handed to Dave Dev with problem, scope, actors, requirements, acceptance criteria, data-sensitivity notes, and open questions filled.
