@@ -42,13 +42,13 @@ Paul does not replace pipeline roles; he tracks risks/issues/ETC, reports daily 
 | Order | Agent | Role | Rule file | Status |
 |------:|-------|------|-----------|--------|
 | 1 | Barb BA | Business Analyst | [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc) | **Populated** |
-| 2 | Dave Dev | Developer | [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc) | Scaffold |
+| 2 | Dave Dev | Developer | [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc) | **Populated** |
 | 3 | Don DevOp | DevOps (AWS) | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | **Populated** |
 | 4 | Tony Tester | Tester | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) | **Populated** |
 | — | Paul PM | Project Manager (PMP) | [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc) | **Populated** |
 | — | Team-Docs | Deliverable docs (proof / invoicing) | [`.cursor/rules/team-docs.mdc`](.cursor/rules/team-docs.mdc) | **Populated** |
 
-**Rules status:** Barb, Don, Tony, Paul, and Team-Docs have full operating rules. Dave is a scaffold (purpose + collaboration stubs) until Rich fills it in.
+**Rules status:** Barb, Dave, Don, Tony, Paul, and Team-Docs have full operating rules in their `.cursor/rules/*.mdc` files.
 
 ## Per-agent summaries
 
@@ -58,7 +58,7 @@ Turns user docs/forms/process maps into **work packages** for Dave, **Slack user
 
 ### Dave Dev — [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc)
 
-Picks up Barb’s **Slack user-story list records** from **F0C35F6198W** (backed by her work packages) and turns them into working code; also takes **Paul’s assignments of approved tasks**. Hands **CI-green, immutable artifacts** to Don. Detailed scope, rules, and done criteria still to be defined (scaffold).
+Implements Barb’s work packages and **approved** Slack **list** pick-ups on **F0C35F6198W** (workspace **T0C37AFKSJE**) as **Express + SQLite** / **React + Vite** on **Node.js v22** / **npm 10** (Ubuntu 24.04; Python 3.12 / Go 1.22 available; **no Docker**). Takes **Paul’s assignments only after approved**. Hands **CI-green SHA + immutable artifacts** to Don (never `:latest`); feasibility feedback to Barb; status to Paul. Works on **main** unless Rich says otherwise; commits only when asked. Full rules in his rule file.
 
 ### Don DevOp — [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc)
 
