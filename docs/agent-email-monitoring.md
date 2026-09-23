@@ -52,7 +52,7 @@ Trigger (Automation cron OR subscribe_timer)
 ### Classify
 
 - **Question** — seeks information. Draft answer in **ask mode** only. Do **not** start side-effecting pipeline work until confirmed as a directive.
-- **Directive** — asks the agent to do work. Process under that agent’s current rules (Barb: work packages → project-solution Slack stories → test scenarios). Escalate unclear scope/priority to **Paul PM** (or Rich).
+- **Directive** — asks the agent to do work. Process under that agent’s current rules (Barb: work packages → Slack user-story pick-up tasks in workspace **https://app.slack.com/client/T0C37AFKSJE** / Team ID **T0C37AFKSJE** on the named **project-solution** channel/list surface → test scenarios). Escalate unclear scope/priority to **Paul PM** (or Rich).
 - Mixed: answer the question first; confirm the actionable part before intake.
 
 ### Respond / intake
@@ -103,6 +103,7 @@ Do this wake only:
 2. Confirm authenticated identity is <MAILBOX_ADDRESS> (or that this MCP session is the team binding for that mailbox). If wrong account, stop and log for Rich.
 3. Read the state file for last-processed cursor; fetch new/unread mail only.
 4. For each new message, follow the Email section in the agent rules: classify question vs directive; reply or intake; synthetic/redacted only.
+   For Barb directives that create Slack pick-up stories: post in workspace https://app.slack.com/client/T0C37AFKSJE (Team ID T0C37AFKSJE) on the named project-solution channel/list surface—do not invent channel IDs or tokens.
 5. Update the state file (UTC time, ids processed, counts, errors). No secrets in the file.
 6. Do not commit to git unless Rich asked. Do not expand into unrelated work.
 7. End the turn when the poll is done (or blocked on auth).
@@ -120,6 +121,7 @@ Do this wake only:
 | Bridge trigger | `subscribe_timer` `sub_3364a027-2428-423a-85d4-6da2e88a6933` on [Wire Barb unattended email](https://cursor.com/agents/bc-d176e015-5b83-5d59-b269-5c08f6c0a88c) (name `barb-ba-email-monitor`, 900s) |
 | Cadence | Target **every 15 minutes** (`delaySeconds: 900` or cron `*/15 * * * *`) |
 | Gmail MCP | **Authenticated** — verified as `barbba.cursor@gmail.com` (read poll OK) |
+| Slack pick-up (directives) | Workspace **https://app.slack.com/client/T0C37AFKSJE** (Team ID **T0C37AFKSJE**); named **project-solution** channel/list surface — see [`.cursor/rules/barb-ba.mdc`](../.cursor/rules/barb-ba.mdc) |
 
 ### Live monitoring status
 

@@ -12,7 +12,7 @@ How the Implementation Team works: who does what, how work moves, and where each
 Rich / intake
      │
      ▼
- Barb BA ──work packages + Slack user stories (project-solution)──► Dave Dev ──CI-green artifacts──► Don DevOp ──deploy evidence──► Tony Tester
+ Barb BA ──work packages + Slack user stories (T0C37AFKSJE / project-solution)──► Dave Dev ──CI-green artifacts──► Don DevOp ──deploy evidence──► Tony Tester
      │                                                              ▲                                                      ▲
      └──test scenarios──────────────────────────────────────────────┼──────────────────────────────────────────────────────┘
                                                                     │
@@ -23,7 +23,7 @@ Rich / intake
 | Handoff | From → To | What moves |
 |---------|-----------|------------|
 | Work packages | Barb → Dave | Buildable slices: problem, scope, actors, requirements, acceptance criteria, data-sensitivity notes |
-| Slack user-story tasks | Barb → Dave | Pick-up tasks in the **project-solution** workspace: As a… / I want… / So that…, acceptance criteria, links/refs to package detail (synthetic/redacted only) |
+| Slack user-story tasks | Barb → Dave | Pick-up tasks in Slack workspace **https://app.slack.com/client/T0C37AFKSJE** (Team ID **T0C37AFKSJE**) on the named **project-solution** channel/list surface: As a… / I want… / So that…, acceptance criteria, links/refs to package detail (synthetic/redacted only) |
 | Test scenarios | Barb → Tony | Business-level scenarios mapped to acceptance criteria (not executable scripts) |
 | Deployable artifacts | Dave → Don | CI-green git SHA + immutable artifact (image digest, AMI, Lambda version—never `:latest`) |
 | Deploy evidence | Don → Tony | Verified serving version, health/soak proof, change record, rollback path |
@@ -54,7 +54,7 @@ Paul does not replace pipeline roles; he tracks risks/issues/ETC, reports daily 
 
 ### Barb BA — [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc)
 
-Turns user docs/forms/process maps into **work packages** for Dave, **Slack user-story pick-up tasks** in the **project-solution** workspace, and **test scenarios** for Tony; also **monitors email unattended** at **barbba.cursor@gmail.com** (Automation / `subscribe_timer` + Gmail MCP—see [docs/agent-email-monitoring.md](docs/agent-email-monitoring.md); questions → ask-mode replies; directives → normal intake). Domain: government child-related functions. Optimizes for child outcomes and case-worker efficiency; requires least privilege, need-to-know, minimization, and auditability on sensitive data (no real identifiers in Slack or email). Includes a curated **Public reference sources** catalog (federal / states / territories) for process-design reference—see [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc). Does not write code or executable tests.
+Turns user docs/forms/process maps into **work packages** for Dave, **Slack user-story pick-up tasks** in workspace **https://app.slack.com/client/T0C37AFKSJE** (Team ID **T0C37AFKSJE**) on **project-solution**, and **test scenarios** for Tony; also **monitors email unattended** at **barbba.cursor@gmail.com** (Automation / `subscribe_timer` + Gmail MCP—see [docs/agent-email-monitoring.md](docs/agent-email-monitoring.md); questions → ask-mode replies; directives → normal intake). Domain: government child-related functions. Optimizes for child outcomes and case-worker efficiency; requires least privilege, need-to-know, minimization, and auditability on sensitive data (no real identifiers in Slack or email). Includes a curated **Public reference sources** catalog (federal / states / territories) for process-design reference—see [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc). Does not write code or executable tests.
 
 ### Dave Dev — [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc)
 
