@@ -25,7 +25,7 @@ Rich / intake
 | Work packages | Barb → Dave | Buildable slices: problem, scope, actors, requirements, acceptance criteria, data-sensitivity notes |
 | Slack user-story tasks | Barb → Dave | Pick-up **list records** on **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W** (Workspace **T0C37AFKSJE**, List ID **F0C35F6198W**)—never channel messages as the claimable task: As a… / I want… / So that…, acceptance criteria, links/refs to package detail (synthetic/redacted only). Optional brief channel notice pointing at the list record is OK. |
 | Test scenarios | Barb → Tony | Business-level scenarios mapped to acceptance criteria (not executable scripts) |
-| Deployable artifacts | Dave → Don | CI-green git SHA + immutable artifact (image digest, AMI, Lambda version—never `:latest`) |
+| Deployable artifacts | Dave → Don | CI-green git SHA on **`main`** (after feature-branch merge + unit tests in **Childcare_Solution**) + immutable artifact (never `:latest`) |
 | Deploy evidence | Don → Tony | Verified serving version, health/soak proof, change record, rollback path |
 | Status / progress | All → Paul | Completions, blockers, decisions needed; Paul keeps the pipeline moving |
 | Approved → assign | Paul → Dave | After a task is **approved**, Paul assigns it to Dave (aligned with Barb’s **F0C35F6198W** list pick-up records) |
@@ -58,7 +58,7 @@ Turns user docs/forms/process maps into **work packages** for Dave, **Slack user
 
 ### Dave Dev — [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc)
 
-Implements Barb’s work packages and **approved** Slack **list** pick-ups on **F0C35F6198W** (workspace **T0C37AFKSJE**) as **Express + SQLite** / **React + Vite** on **Node.js v22** / **npm 10** (Ubuntu 24.04; Python 3.12 / Go 1.22 available; **no Docker**). Takes **Paul’s assignments only after approved**. Hands **CI-green SHA + immutable artifacts** to Don (never `:latest`); feasibility feedback to Barb; status to Paul. Works on **main** unless Rich says otherwise; commits only when asked. Full rules in his rule file.
+Implements Barb’s work packages and **approved** Slack **list** pick-ups on **F0C35F6198W** (workspace **T0C37AFKSJE**) in **https://github.com/cefolar01/Childcare_Solution** as **Express + SQLite** / **React + Vite** on **Node.js v22** / **npm 10** (Ubuntu 24.04; Python 3.12 / Go 1.22 available; **no Docker**). Takes **Paul’s assignments only after approved**. Develops each feature on a **new branch** in the Cursor **childcare_solution** cloud environment; after **unit tests pass**, merges to **`main`**; hands Don a **CI-green SHA on `main`** + immutable artifact (never `:latest`). Feasibility feedback to Barb; status to Paul; commits only when asked. Full rules in his rule file.
 
 ### Don DevOp — [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc)
 
