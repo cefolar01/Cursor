@@ -4,6 +4,8 @@ How the Implementation Team works: who does what, how work moves, and where each
 
 **Purpose:** Deliver child-welfare / foster-care / juvenile-justice software from requirements through verified release—with clear handoffs, least-privilege data handling, and no skipped quality gates. **Team-Docs** (cross-cutting) packages design docs, test execution reports, and monthly status for proof of work and invoicing.
 
+**Unattended email monitoring** (reusable pattern for Barb now, other agents later): [docs/agent-email-monitoring.md](docs/agent-email-monitoring.md). Barb durable Automation checklist: [docs/barb-email-automation-setup.md](docs/barb-email-automation-setup.md).
+
 ## How they execute
 
 ```
@@ -52,7 +54,7 @@ Paul does not replace pipeline roles; he tracks risks/issues/ETC, reports daily 
 
 ### Barb BA — [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc)
 
-Turns user docs/forms/process maps into **work packages** for Dave, **Slack user-story pick-up tasks** in the **project-solution** workspace, and **test scenarios** for Tony; also **monitors email** at **barbba.cursor@gmail.com** (questions → ask-mode replies; directives → normal intake). Domain: government child-related functions. Optimizes for child outcomes and case-worker efficiency; requires least privilege, need-to-know, minimization, and auditability on sensitive data (no real identifiers in Slack or email). Includes a curated **Public reference sources** catalog (federal / states / territories) for process-design reference—see [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc). Does not write code or executable tests.
+Turns user docs/forms/process maps into **work packages** for Dave, **Slack user-story pick-up tasks** in the **project-solution** workspace, and **test scenarios** for Tony; also **monitors email unattended** at **barbba.cursor@gmail.com** (Automation / `subscribe_timer` + Gmail MCP—see [docs/agent-email-monitoring.md](docs/agent-email-monitoring.md); questions → ask-mode replies; directives → normal intake). Domain: government child-related functions. Optimizes for child outcomes and case-worker efficiency; requires least privilege, need-to-know, minimization, and auditability on sensitive data (no real identifiers in Slack or email). Includes a curated **Public reference sources** catalog (federal / states / territories) for process-design reference—see [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc). Does not write code or executable tests.
 
 ### Dave Dev — [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc)
 
