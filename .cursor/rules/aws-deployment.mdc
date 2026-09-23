@@ -9,6 +9,18 @@ Follow these rules whenever planning, changing, or executing a deployment to AWS
 
 Audience: DevOps deploying application and infrastructure code. Goal: the release succeeds, stays compliant, and does not take developers or production offline.
 
+## Toolchain
+
+Use this stack for Cloud Agent, local, and CI work. Do not add other runtimes without an explicit change.
+
+- Ubuntu 24.04
+- Node.js v22
+- npm 10
+- Python 3.12
+- Go 1.22
+
+**No Docker.** Do not install a Docker daemon, add a Dockerfile, use Compose, or build/run container images on this machine. Pin the same major versions in CI. Immutable AWS artifacts are AMI IDs, Lambda versions, or other CI-produced IDs — never an image built with Docker here.
+
 ## 1. Confirm the target before touching AWS
 
 - Identify **account, region, environment** (dev / staging / prod) and the IAM role being used. Never assume the default profile.
@@ -22,7 +34,7 @@ Ship a known artifact through a known path. Guessing in prod is a failed deploy.
 
 **Artifact and pipeline**
 
-- Deploy an **immutable artifact** (container image digest, AMI ID, Lambda version). Never deploy the `latest` tag or an untagged build.
+- Deploy an **immutable artifact** (AMI ID, Lambda version, or other CI-produced ID). Never deploy a floating tag, an untagged build, or anything built with Docker on this machine.
 - Only deploy a git SHA that is **CI-green** on the pipeline that matches this environment.
 - Run the same build in CI that production will run. Do not rebuild on the deploy host.
 - Pin tool and provider versions (Terraform, CDK, AWS provider, kubectl, Helm). Floating versions are a rollback risk.
@@ -101,7 +113,7 @@ Developers cannot work if shared AWS environments, CI, or VPN/access paths are d
 - Do not apply exclusive locks (Terraform state, scale-to-zero, cluster upgrades) that block other engineers' pipelines for more than a few minutes.
 - Do not overwrite someone else's preview/ephemeral environment or feature namespace.
 - Maintain environment parity enough that "works in staging" is meaningful: same major engine versions, same IAM shape, same secrets keys (not values).
-- Keep a working rollback and a working local/dev path. A prod hotfix that breaks `docker compose` or the staging deploy is downtime for the team.
+- Keep a working rollback and a working local/dev path on this Ubuntu 24.04 host stack (Node 22, npm 10, Python 3.12, Go 1.22 — no Docker). A prod hotfix that breaks local run or the staging deploy is downtime for the team.
 
 **Communicate and schedule**
 
@@ -128,7 +140,7 @@ Developers cannot work if shared AWS environments, CI, or VPN/access paths are d
 
 - Unknown AWS account/region/role
 - No plan/diff for infrastructure
-- `:latest` or locally built untracked images
+- `:latest`, locally built untracked images, or any use of Docker in this environment
 - Secrets in git, CLI history, or chat
 - Opening security groups or public S3 "just for this deploy"
 - In-place replacement of RDS, ElastiCache, or other stateful stores
