@@ -2,8 +2,6 @@
 
 Reusable pattern for **true unattended** inbox monitoring by Implementation Team agents. Barb BA is the first onboarded instance; other agents reuse this template later.
 
-**Canonical living copy:** Project store. This file is the in-repo mirror for team reference.
-
 **Credentials:** never invent app passwords, API keys, or tokens. Use the **named mailbox address** plus **Gmail MCP auth** (OAuth via `mcp_auth`) only. Do not put secrets in this doc, agent rules, Slack, or logs.
 
 ## Goals
@@ -52,7 +50,7 @@ Trigger (Automation cron OR subscribe_timer)
 ### Classify
 
 - **Question** — seeks information. Draft answer in **ask mode** only. Do **not** start side-effecting pipeline work until confirmed as a directive.
-- **Directive** — asks the agent to do work. Process under that agent’s current rules (Barb: work packages → Slack user-story pick-up tasks in workspace **https://app.slack.com/client/T0C37AFKSJE** / Team ID **T0C37AFKSJE** on the named **project-solution** channel/list surface → test scenarios). Escalate unclear scope/priority to **Paul PM** (or Rich).
+- **Directive** — asks the agent to do work. Process under that agent’s current rules (Barb: work packages → user-story pick-up **list records** on canonical list **F0C35F6198W** — **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W**, workspace **T0C37AFKSJE** — never as channel messages → test scenarios). Escalate unclear scope/priority to **Paul PM** (or Rich).
 - Mixed: answer the question first; confirm the actionable part before intake.
 
 ### Respond / intake
@@ -103,7 +101,7 @@ Do this wake only:
 2. Confirm authenticated identity is <MAILBOX_ADDRESS> (or that this MCP session is the team binding for that mailbox). If wrong account, stop and log for Rich.
 3. Read the state file for last-processed cursor; fetch new/unread mail only.
 4. For each new message, follow the Email section in the agent rules: classify question vs directive; reply or intake; synthetic/redacted only.
-   For Barb directives that create Slack pick-up stories: post in workspace https://app.slack.com/client/T0C37AFKSJE (Team ID T0C37AFKSJE) on the named project-solution channel/list surface—do not invent channel IDs or tokens.
+   For Barb directives that create Slack pick-up stories: create list records on https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W (Workspace T0C37AFKSJE, List ID F0C35F6198W)—never as #project-solution (or other) channel messages. Optional brief channel notice pointing at the list record is OK. Do not invent other list/channel IDs or tokens.
 5. Update the state file (UTC time, ids processed, counts, errors). No secrets in the file.
 6. Do not commit to git unless Rich asked. Do not expand into unrelated work.
 7. End the turn when the poll is done (or blocked on auth).
@@ -121,13 +119,13 @@ Do this wake only:
 | Bridge trigger | `subscribe_timer` `sub_3364a027-2428-423a-85d4-6da2e88a6933` on [Wire Barb unattended email](https://cursor.com/agents/bc-d176e015-5b83-5d59-b269-5c08f6c0a88c) (name `barb-ba-email-monitor`, 900s) |
 | Cadence | Target **every 15 minutes** (`delaySeconds: 900` or cron `*/15 * * * *`) |
 | Gmail MCP | **Authenticated** — verified as `barbba.cursor@gmail.com` (read poll OK) |
-| Slack pick-up (directives) | Workspace **https://app.slack.com/client/T0C37AFKSJE** (Team ID **T0C37AFKSJE**); named **project-solution** channel/list surface — see [`.cursor/rules/barb-ba.mdc`](../.cursor/rules/barb-ba.mdc) |
+| Slack pick-up (directives) | **List records** on **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W** (Workspace **T0C37AFKSJE**, List ID **F0C35F6198W**)—never channel messages as the claimable task; see [`.cursor/rules/barb-ba.mdc`](../.cursor/rules/barb-ba.mdc) |
 
 ### Live monitoring status
 
 - **Rules + pattern:** shipped.
 - **Live mailbox I/O:** **active** — Gmail MCP authenticated; verified read as `barbba.cursor@gmail.com` (2026-09-23T01:22:13Z).
-- **Unattended wake:** bridge timer **armed** (`sub_3364a027-2428-423a-85d4-6da2e88a6933`). **Durable** Automation still pending Rich at [cursor.com/automations](https://cursor.com/automations).
+- **Unattended wake:** bridge timer **armed** (`sub_3364a027-2428-423a-85d4-6da2e88a6933`). **Durable** Automation still pending Rich create at [cursor.com/automations/new](https://cursor.com/automations/new) — checklist + create packet emailed 2026-09-23T13:08:33Z (`docs/barb-email-automation-setup.md`).
 - **Auth note:** Earlier `mcp_auth` calls timed out with no visible prompt in Project/chat; a later `mcp_auth` completed (Rich signed in as Barb). Prefer completing OAuth from [cursor.com/agents](https://cursor.com/agents) MCP controls if a chat prompt does not appear.
 
 
@@ -142,4 +140,4 @@ Do this wake only:
 
 | Agent | Mailbox | Rules | Automation id / URL | State file | Status |
 |-------|---------|-------|---------------------|------------|--------|
-| Barb BA | barbba.cursor@gmail.com | [barb-ba.mdc](../.cursor/rules/barb-ba.mdc) (store: `docs/agents/barb-ba.md`) | *pending Automation* | Project store `internal/email-monitor/barb-ba-state.md` | **Gmail auth OK**; bridge timer armed; Automation still pending |
+| Barb BA | barbba.cursor@gmail.com | Project store `docs/agents/barb-ba.md` · [`.cursor/rules/barb-ba.mdc`](../.cursor/rules/barb-ba.mdc) | *pending Automation* | [barb-ba-state.md](../internal/email-monitor/barb-ba-state.md) | **Gmail auth OK**; bridge timer armed; Automation still pending |
