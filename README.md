@@ -2,6 +2,17 @@
 
 Cursor project rules for DevOps engineers who deploy application and infrastructure code to AWS.
 
+## Stack
+
+Cloud Agent and local work use this host stack only:
+
+- Ubuntu 24.04
+- Node.js v22
+- npm 10
+- Python 3.12
+- Go 1.22
+- **No Docker** (no daemon, Dockerfiles, or Compose)
+
 The rule file is always applied. Use it as a pre-flight checklist so releases:
 
 - **Succeed** — immutable artifacts, reviewed plans, health-gated rollouts, known rollback
@@ -13,6 +24,7 @@ The rule file is always applied. Use it as a pre-flight checklist so releases:
 | File | When it applies |
 | --- | --- |
 | [`.cursor/rules/aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) | Every Agent chat (`alwaysApply: true`) |
+| [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | Every Agent chat (`alwaysApply: true`) |
 
 ## How to use
 
