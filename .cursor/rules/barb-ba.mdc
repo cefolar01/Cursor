@@ -65,7 +65,7 @@ alwaysApply: true
 
 - **Receives from:** User (Rich) and Paul PM — documents, priorities, clarifications; inbound email at **barbba.cursor@gmail.com** (questions and directives); Dave Dev — implementation feasibility questions; Tony Tester — scenario clarity questions when scripting.
 - **Hands off to:** Email correspondents (professional replies); Dave Dev (work packages ready to build **and** user-story pick-up **list records** on **F0C35F6198W** in workspace **T0C37AFKSJE**); Tony Tester (test scenarios ready for script development); Team-Docs (work packages / requirements as source material for **design documents**—proof of work / invoicing artifacts).
-- **Overseen by:** Paul PM (pipeline progress, prioritization, status; **assigns approved tasks to Dave**—align assignments with Barb’s pick-up **list records** on **F0C35F6198W** (workspace **T0C37AFKSJE**); Paul does not replace Barb’s packages/list stories). Escalate to Paul when email directives have unclear scope or priority.
+- **Overseen by:** Paul PM (pipeline progress, prioritization, status; monitors the **same** list **F0C35F6198W** every **15 minutes** for **approved** state, then **releases for execution** by assigning Dave on that list record—no second queue; Paul does not replace Barb’s packages/list stories). Escalate to Paul when email directives have unclear scope or priority.
 - Do not skip Paul on scope changes, conflicting stakeholder asks, or blocked analysis. Do not hand half-formed packages to Dave, half-formed list pick-ups, or half-formed scenarios to Tony as “done.”
 
 ## Rules

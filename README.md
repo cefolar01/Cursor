@@ -24,16 +24,16 @@ Rich / intake
 |---------|-----------|------------|
 | Work packages | Barb → Dave | Buildable slices: problem, scope, actors, requirements, acceptance criteria, data-sensitivity notes |
 | Slack user-story tasks | Barb → Dave | Pick-up **list records** on **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W** (Workspace **T0C37AFKSJE**, List ID **F0C35F6198W**)—never channel messages as the claimable task: As a… / I want… / So that…, acceptance criteria, links/refs to package detail (synthetic/redacted only). Optional brief channel notice pointing at the list record is OK. |
-| Test scenarios | Barb → Tony | Business-level scenarios mapped to acceptance criteria (not executable scripts) |
+| Test scenarios | Barb → Tony | Business-level **test scenarios on the user story** (list **F0C35F6198W**)—Tony develops validation **test cases** from those scenarios (not executable scripts from Barb) |
 | Deployable artifacts | Dave → Don | CI-green git SHA on **`main`** (after feature-branch merge + unit tests in **Childcare_Solution**) + immutable artifact (never `:latest`) |
 | Deploy evidence | Don → Tony | Verified serving version, health/soak proof, change record, rollback path |
 | Status / progress | All → Paul | Completions, blockers, decisions needed; Paul keeps the pipeline moving |
-| Approved → assign | Paul → Dave | After a task is **approved**, Paul assigns it to Dave (aligned with Barb’s **F0C35F6198W** list pick-up records) |
+| Approved → release for execution | Paul → Dave | Paul monitors Slack list **F0C35F6198W** every **15 min**; when a task is **approved**, he **releases it for execution** (assigns Dave on that same list record—no second queue) and includes newly approved/released items in daily **project-solution** status |
 | Design source | Barb → Team-Docs | Work packages / requirements for **design documents** (proof of work) |
 | Execution results | Tony → Team-Docs | Pass/fail/block cases and evidence for **test execution reports** |
 | Monthly rollup input | Paul → Team-Docs | Completions, ETC, blockers, risk/issue highlights for **monthly status reports** |
 
-Paul does not replace pipeline roles; he tracks risks/issues/ETC, reports daily to **project-solution**, assigns only **approved** work to Dave, and escalates conflicts. Agents escalate to Paul when scope conflicts, policy is missing, or a handoff is blocked.
+Paul does not replace pipeline roles; he tracks risks/issues/ETC, polls list **F0C35F6198W** every **15 minutes** for approval, **releases approved work for execution** (assigns Dave on that list—no second queue), reports daily to **project-solution** (including newly approved/released items), and escalates conflicts. Agents escalate to Paul when scope conflicts, policy is missing, or a handoff is blocked.
 
 **Team-Docs** is cross-cutting (like Paul)—not a sequential step between Barb → Dave → Don → Tony. It packages Barb, Tony, and Paul outputs into client/billing evidence artifacts.
 
@@ -66,11 +66,11 @@ Deploys app and infra to **AWS** under the [AWS Deployment Rules](.cursor/rules/
 
 ### Tony Tester — [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc)
 
-Turns Barb’s **test scenarios** into granular **test cases** (tasks associated to the main user story in **project-solution**), executes them against Don’s **deployed** environment using deploy evidence, and records discrete **pass / fail / block**—covering happy path and anomaly paths—**before** sign-off or closing the Slack story as complete. Synthetic/redacted data only. Full rules in his rule file.
+Works from tasks on Slack list **F0C35F6198W** (workspace **T0C37AFKSJE**—same list Barb’s pick-ups and Paul’s approval use). Uses the **test scenario on the user story** to develop granular **test cases** (tasks associated to that main story on the same list—no second queue), executes them against Don’s **deployed** environment using deploy evidence, and records discrete **pass / fail / block**—covering happy path and anomaly paths—**before** sign-off or closing the Slack story as complete. Synthetic/redacted data only. Full rules in his rule file.
 
 ### Paul PM — [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc)
 
-**PMP-certified** PM: tracks **risks**, **issues**, and **ETC**; posts **daily status** to **project-solution**; polls the task list every **15 minutes** for **approved** work and **assigns approved tasks to Dave Dev**. Logs risks/issues in **Project Risks and Issues**. Oversees Barb → Dave → Don → Tony without authoring packages, code, deploys, or tests. Supplies monthly rollup input to **Team-Docs**. Full rules in his rule file.
+**PMP-certified** PM: tracks **risks**, **issues**, and **ETC**; posts **daily status** to **project-solution** (including newly **approved** / **released for execution** items); polls Slack list **F0C35F6198W** (workspace **T0C37AFKSJE**—same list Barb’s pick-ups use) every **15 minutes** for approval state and **releases approved work for execution** by assigning **Dave Dev** (no second queue). Logs risks/issues in **Project Risks and Issues**. Oversees Barb → Dave → Don → Tony without authoring packages, code, deploys, or tests. Supplies monthly rollup input to **Team-Docs**. Full rules in his rule file.
 
 ### Team-Docs — [`.cursor/rules/team-docs.mdc`](.cursor/rules/team-docs.mdc)
 

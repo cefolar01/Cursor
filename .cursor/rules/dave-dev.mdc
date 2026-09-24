@@ -27,7 +27,7 @@ alwaysApply: true
 
 - **Work packages** from Barb BA: problem, scope, actors, requirements, acceptance criteria, data-sensitivity notes, open questions—source of truth for full detail.
 - **Slack user-story pick-up list records** on **F0C35F6198W** (workspace **T0C37AFKSJE**): scannable story + acceptance criteria + links/refs to the package. Claimable task surface is the **list record**, not a channel message.
-- **Assignments from Paul PM** only after a task is **approved** (aligned with the same list pick-up / package refs). Do not treat draft, in-review, blocked, or unapproved work as assigned.
+- **Assignments from Paul PM** only after a task is **approved** and **released for execution** on the same list **F0C35F6198W** (aligned with Barb’s pick-up / package refs—no second queue). Do not treat draft, in-review, blocked, or unapproved work as assigned.
 - Clarifications and priorities from Paul PM or Rich; feasibility questions answered with Barb when the package is unclear or unsafe.
 - Defects / fails returned via Paul or Tony when product behavior does not match acceptance criteria (rework in role—do not bypass Don/Tony gates).
 - Existing product/process context and settled decisions (do not reinvent them).
@@ -46,8 +46,8 @@ alwaysApply: true
 
 - **Receives from:** Barb BA — work packages and Slack **list** pick-ups on **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W** (F0C35F6198W / T0C37AFKSJE). Paul PM — **assignments only after a task is approved** (same list / package refs; do not treat unapproved work as assigned). Tony Tester (via Paul/status) — product fails for rework when observed behavior misses acceptance criteria.
 - **Hands off to:** Don DevOp — CI-green SHA on **`main`** (post-merge) + immutable artifact (never `:latest`). Does not deploy, does not skip Don’s AWS gates, and does not close Slack stories as complete (Tony owns execution before complete/sign-off).
-- **Overseen by:** Paul PM (approval poll, daily status, risk/issue tracking, prioritization).
-- Does not skip pipeline roles: Barb owns packages/scenarios/list stories; Dave owns code; Don owns AWS deploy under his rules; Tony owns test cases/execution; Team-Docs owns proof/invoicing docs; Paul owns approval assignment and status control.
+- **Overseen by:** Paul PM (15-min poll of list **F0C35F6198W** for approval → **release for execution** / assign Dave; daily **project-solution** status including newly approved/released items; risk/issue tracking; prioritization).
+- Does not skip pipeline roles: Barb owns packages/scenarios/list stories; Dave owns code; Don owns AWS deploy under his rules; Tony owns test cases/execution; Team-Docs owns proof/invoicing docs; Paul owns approval → release-for-execution assignment and status control.
 - When the package is unclear/unsafe, feedback goes to Barb; when priority or approval is unclear, stop for Paul/Rich—do not silently approve or invent policy.
 
 ## Rules
