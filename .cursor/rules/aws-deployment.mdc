@@ -23,6 +23,7 @@ Use this stack for Cloud Agent, local, and CI work. Do not add other runtimes wi
 
 ## 1. Confirm the target before touching AWS
 
+- **Project default region:** **us-east-2** (human console: https://us-east-2.console.aws.amazon.com/console/home?region=us-east-2). Confirm account/env/role as below; do not invent procedures beyond these rules.
 - Identify **account, region, environment** (dev / staging / prod) and the IAM role being used. Never assume the default profile.
 - Refuse to run mutating commands (`apply`, `deploy`, `update-stack`, `kubectl apply`, ECS/EKS rollouts) until the target matches the requested environment.
 - Prefer environment-specific roles and backends (separate AWS accounts or at least separate state files). Never point a prod backend at a non-prod workspace.
