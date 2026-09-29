@@ -2,23 +2,27 @@
 
 How the Implementation Team works: who does what, how work moves, and where each agent’s rules live.
 
-**Purpose:** Deliver child-welfare / foster-care / juvenile-justice software from requirements through verified release—with clear handoffs, least-privilege data handling, and no skipped quality gates. **Team-Docs** (cross-cutting) packages design docs, test execution reports, and monthly status for proof of work and invoicing.
+## Stack
+
+Cloud Agent and local work use this host stack only:
+
+- Ubuntu 24.04
+- Node.js v22
+- npm 10
+- Python 3.12
+- Go 1.22
+- **No Docker** (no daemon, Dockerfiles, or Compose)
+
+The rule file is always applied. Use it as a pre-flight checklist so releases:
 
 **Unattended email monitoring** (reusable pattern for Barb now, other agents later): [docs/agent-email-monitoring.md](docs/agent-email-monitoring.md). Barb durable Automation checklist: [docs/barb-email-automation-setup.md](docs/barb-email-automation-setup.md).
 
 ## How they execute
 
-```
-Rich / intake
-     │
-     ▼
- Barb BA ──work packages + Slack list pick-ups (F0C35F6198W)──► Dave Dev ──CI-green artifacts──► Don DevOp ──deploy evidence──► Tony Tester
-     │                                                              ▲                                                      ▲
-     └──test scenarios──────────────────────────────────────────────┼──────────────────────────────────────────────────────┘
-                                                                    │
-                         Paul PM (oversees status, priorities, blockers)
-                         Team-Docs (cross-cutting: design docs, test reports, monthly status for proof/invoicing)
-```
+| File | When it applies |
+| --- | --- |
+| [`.cursor/rules/aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) | Every Agent chat (`alwaysApply: true`) |
+| [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | Every Agent chat (`alwaysApply: true`) |
 
 | Handoff | From → To | What moves |
 |---------|-----------|------------|
