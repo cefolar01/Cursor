@@ -8,6 +8,12 @@
         "--metadata",
         "AWS_REGION=us-east-2"
       ]
+    },
+    "slack": {
+      "url": "https://mcp.slack.com/mcp",
+      "auth": {
+        "CLIENT_ID": "3660753192626.8903469228982"
+      }
     }
   }
 }
