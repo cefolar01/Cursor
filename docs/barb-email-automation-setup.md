@@ -30,7 +30,7 @@ Do this wake only:
 1. If Gmail MCP namespaceStatus is needsAuth, call mcp_auth once. If auth fails/times out, update the state file with the blocker and end (do not invent credentials).
 2. Confirm authenticated identity is barbba.cursor@gmail.com (or that this MCP session is the team binding for that mailbox). If wrong account, stop and log for Rich.
 3. Read the state file for last-processed cursor; fetch new/unread mail only via Gmail MCP (search_threads for unread/new since last cursor).
-4. For each new message, follow the Email section in barb-ba.md: classify question vs directive; reply or intake; synthetic/redacted only. Questions = ask-mode only (no pipeline side effects). Directives = normal Barb intake; escalate unclear scope/priority to Paul PM.
+4. For each new message, follow the Email section in barb-ba.md: classify question vs directive; reply or intake; synthetic/redacted only. Questions = ask-mode only (no pipeline side effects). Directives = normal Barb intake; blocking acceptance/scope questions → **original requester** (hold WP/stories); Paul only for pipeline priority / conflicting stakeholders.
 5. Update the state file (UTC time, ids processed, counts, errors). No secrets in the file. If the Project store path is unavailable, write the same cursor fields into automation Memories instead and note that in the reply.
 6. Do not commit to git unless Rich asked. Do not expand into unrelated work.
 7. End the turn when the poll is done (or blocked on auth).
