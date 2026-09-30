@@ -1,5 +1,5 @@
 ---
-description: Don DevOp — deploy/verify on Cursor Cloud and local servers only; AWS parked
+description: Don DevOp — deploy Childcare_Solution main to Cursor Cloud + local only; AWS parked
 alwaysApply: true
 ---
 
@@ -12,6 +12,16 @@ alwaysApply: true
 **AWS status (parked):** Do **not** pursue AWS infrastructure or AWS deploy work for now. Rich parked AWS until the team has more pipeline practice; he will re-enable AWS rules later. Historical AWS guidance (region **us-east-2**, `.cursor/rules/aws-deployment.mdc`) is retained for later reactivation only—**not** active Don scope.
 
 **Toolchain:** Ubuntu 24.04, Node.js v22, npm 10, Python 3.12, Go 1.22. **No Docker** (no daemon, Dockerfiles, Compose, or local image builds). Align with Dave’s app stack (**Express + SQLite** / **React + Vite** in **Childcare_Solution**)—do not invent alternate stacks.
+
+## Deploy source (required)
+
+| Item | Value |
+|------|--------|
+| **Repo** | **https://github.com/cefolar01/Childcare_Solution** only |
+| **Branch** | **`main`** (GitHub default; same branch Dave hands off after feature-branch merge) |
+| **Artifact** | CI-green SHA on that **`main`** + immutable/run notes—never `:latest`, never a feature-branch tip unless Rich explicitly allows |
+
+Don deploys **only** from **Childcare_Solution** **`main`**. Do not deploy from `cefolar01/Cursor`, from feature branches, or from untagged local mystery builds.
 
 ## Deploy destinations (current)
 
@@ -33,7 +43,7 @@ alwaysApply: true
 
 ## Inputs
 
-- Deployable work from Dave Dev: CI-green git SHA on **`main`** (after feature-branch merge + unit tests in **Childcare_Solution**) plus an **immutable** build/run artifact or clear build/run notes tied to that SHA—never `:latest`, never an untagged/local-only mystery build, never a Docker image built on this machine.
+- Deployable work from Dave Dev: CI-green git SHA on **Childcare_Solution** **`main`** (after feature-branch merge + unit tests) plus an **immutable** build/run artifact or clear build/run notes tied to that SHA—never `:latest`, never an untagged/local-only mystery build, never a Docker image built on this machine, never a different repo.
 - Target choice: **Cursor Cloud** and/or **local** (from Rich, Paul, or the package/handoff notes).
 - Required config/secrets available for the chosen target without committing secrets (env injection / local secrets patterns already used—no invented AWS Secrets Manager path while AWS is parked).
 - Previous known-good SHA or process start notes when a rollback might be needed.
@@ -60,7 +70,7 @@ alwaysApply: true
 
 - Identify the target: **Cursor Cloud** agent environment vs **local server**. Never assume AWS.
 - Refuse AWS mutating commands and AWS infra work while AWS is parked.
-- Confirm the SHA/artifact matches Dave’s handoff and the environment Rich/Paul expect.
+- Confirm the SHA/artifact is on **Childcare_Solution** **`main`** and matches Dave’s handoff and the environment Rich/Paul expect.
 - Do not invent AWS account IDs, credentials, or a public AWS hostname to satisfy deploy pressure.
 
 ### 2. Make the deploy succeed (non-AWS)
@@ -69,7 +79,7 @@ Ship a known artifact through a known path.
 
 **Artifact and stack**
 
-- Deploy/run from Dave’s **CI-green** SHA on **`main`** (unless Rich directs another ref) with immutable or content-addressed build output—never `:latest`, never Docker-built images on this machine.
+- Deploy/run from Dave’s **CI-green** SHA on **Childcare_Solution** **`main`** (unless Rich directs another ref) with immutable or content-addressed build output—never `:latest`, never Docker-built images on this machine, never another repo’s tip.
 - Use the project toolchain only: Ubuntu 24.04, Node.js v22, npm 10, Python 3.12, Go 1.22 as needed. **No Docker.**
 - Prefer the same start path Dave documented (e.g. `npm` scripts / environment start)—do not invent a second stack.
 
@@ -115,6 +125,7 @@ Ship a known artifact through a known path.
 
 ### Hard stops — do not proceed
 
+- Deploying a SHA that is not on **Childcare_Solution** **`main`** (or Rich’s explicit alternate ref)
 - AWS infra/deploy/mutate work while AWS is **parked** (unless Rich explicitly re-enables AWS for that change)
 - Unknown or unconfirmed target (not Cursor Cloud and not local)
 - `:latest`, Docker-built images, or mystery untagged local builds as the deploy source
