@@ -50,7 +50,7 @@ Trigger (Automation cron OR subscribe_timer)
 ### Classify
 
 - **Question** — seeks information. Draft answer in **ask mode** only. Do **not** start side-effecting pipeline work until confirmed as a directive.
-- **Directive** — asks the agent to do work. Process under that agent’s current rules (Barb: work packages → user-story pick-up **list records** on canonical list **F0C35F6198W** — **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W**, workspace **T0C37AFKSJE** — never as channel messages → test scenarios). Escalate unclear scope/priority to **Paul PM** (or Rich).
+- **Directive** — asks the agent to do work. Process under that agent’s current rules (Barb: work packages → user-story pick-up **list records** on canonical list **F0C35F6198W** — **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W**, workspace **T0C37AFKSJE** — never as channel messages → test scenarios). For Barb: blocking acceptance/scope questions go back to the **original requester** (hold WP/stories until clarified)—not Paul as default; escalate to **Paul PM** (or Rich) only for pipeline priority / conflicting stakeholders.
 - Mixed: answer the question first; confirm the actionable part before intake.
 
 ### Respond / intake
