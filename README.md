@@ -19,7 +19,7 @@ Cloud Agent and local work use this host stack only:
 
 | File | When it applies |
 | --- | --- |
-| [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | Every Agent chat (`alwaysApply: true`) — Cursor Cloud + local deploy |
+| [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | Every Agent chat (`alwaysApply: true`) — Cursor Cloud **and** desktop/local deploy |
 | [`.cursor/rules/aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) | **Parked** (`alwaysApply: false`) until Rich re-enables AWS |
 
 | Handoff | From → To | What moves |
@@ -28,7 +28,7 @@ Cloud Agent and local work use this host stack only:
 | Slack user-story tasks | Barb → Dave | Pick-up **list records** on **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W** (Workspace **T0C37AFKSJE**, List ID **F0C35F6198W**)—never channel messages as the claimable task: As a… / I want… / So that…, acceptance criteria, links/refs to package detail (synthetic/redacted only). Optional brief channel notice pointing at the list record is OK. |
 | Test scenarios | Barb → Tony | Business-level **test scenarios on the user story** (list **F0C35F6198W**)—Tony develops validation **test cases** from those scenarios (not executable scripts from Barb) |
 | Deployable artifacts | Dave → Don | CI-green git SHA on **Childcare_Solution** **`main`** (after feature-branch merge + unit tests) + immutable artifact (never `:latest`) |
-| Deploy evidence | Don → Tony | Verified serving version on **Cursor Cloud** (and/or designated local), health/smoke proof, change record, rollback path (AWS parked) |
+| Deploy evidence | Don → Tony | Verified serving version on **both** **Cursor Cloud** and **desktop/local**, health/smoke on each, change record, rollback path (AWS parked) |
 | Status / progress | All → Paul | Completions, blockers, decisions needed; Paul keeps the pipeline moving |
 | Clarification (pre-story) | Barb → **original requester** | Blocking acceptance/scope questions on a prospective user story go back to the **requester** (email)—**not** Paul as default. Hold WP / stories / Slack pick-ups until clarified (or Rich authorizes assumptions). Paul still owns approve → release **after** stories exist. |
 | Approved → release for execution | Paul → Dave | Paul monitors Slack list **F0C35F6198W** every **15 min**; when a task is **approved**, he **releases it for execution** (assigns Dave on that same list record—no second queue) and includes newly approved/released items in daily **project-solution** status |
@@ -46,7 +46,7 @@ Paul does not replace pipeline roles; he tracks risks/issues/ETC, polls list **F
 |------:|-------|------|-----------|--------|
 | 1 | Barb BA | Business Analyst | [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc) | **Populated** |
 | 2 | Dave Dev | Developer | [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc) | **Populated** |
-| 3 | Don DevOp | DevOps (Cursor Cloud + local; AWS parked) | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | **Populated** |
+| 3 | Don DevOp | DevOps (Cursor Cloud **and** desktop/local; AWS parked) | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | **Populated** |
 | 4 | Tony Tester | Tester | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) | **Populated** |
 | — | Paul PM | Project Manager (PMP) | [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc) | **Populated** |
 | — | Team-Docs | Deliverable docs (proof / invoicing) | [`.cursor/rules/team-docs.mdc`](.cursor/rules/team-docs.mdc) | **Populated** |
@@ -65,7 +65,7 @@ Implements Barb’s work packages and **approved** Slack **list** pick-ups on **
 
 ### Don DevOp — [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc)
 
-Deploys and verifies **only** from **Childcare_Solution** **`main`** onto **Cursor Cloud** agent environments and **local servers** (**Ubuntu 24.04**; **Node.js v22** / **npm 10**; **Python 3.12**; **Go 1.22**; **no Docker**; Express + SQLite / React + Vite as Dave built). Confirms repo/branch/SHA, health/smoke proof, rollback notes, then hands **deploy evidence** to Tony. **AWS deploy/infra is parked** until Rich re-enables it ([`aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) inactive; historical us-east-2 / [AWS MCP Server](docs/aws-mcp-server.md) docs retained for later). Does not invent credentials or resume AWS work on his own. Full rules live in his rule file—not duplicated here.
+Deploys and verifies **only** from **Childcare_Solution** **`main`** onto **both** **Cursor Cloud** and the **desktop/local server** (**Ubuntu 24.04**; **Node.js v22** / **npm 10**; **Python 3.12**; **Go 1.22**; **no Docker**; Express + SQLite / React + Vite as Dave built). Cursor-Cloud-only is incomplete. Confirms repo/branch/SHA, dual health/smoke proof, rollback notes, then hands **deploy evidence** to Tony. **AWS deploy/infra is parked** until Rich re-enables it ([`aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) inactive). Does not invent credentials or resume AWS work on his own. Full rules live in his rule file—not duplicated here.
 
 ### Tony Tester — [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc)
 
