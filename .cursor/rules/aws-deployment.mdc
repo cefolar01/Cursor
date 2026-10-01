@@ -1,11 +1,13 @@
 ---
-description: AWS deployment checklist for successful, secure, low-downtime releases
-alwaysApply: true
+description: PARKED — AWS deployment checklist (inactive until Rich re-enables); Don uses Cursor Cloud + local only
+alwaysApply: false
 ---
 
 # AWS Deployment Rules
 
-Follow these rules whenever planning, changing, or executing a deployment to AWS. Treat them as a gate: do not ship if a required check is skipped.
+> **PARKED (2026-09-30):** Rich deferred AWS deploy/infra until more pipeline practice. **Do not** apply these rules or mutate AWS now. Active Don scope is **Cursor Cloud** + **local servers** only — see `.cursor/rules/don-devops.mdc`. Rich will re-enable this file later.
+
+Follow these rules whenever planning, changing, or executing a deployment to AWS **after Rich re-enables AWS**. Treat them as a gate: do not ship if a required check is skipped.
 
 Audience: DevOps deploying application and infrastructure code. Goal: the release succeeds, stays compliant, and does not take developers or production offline.
 

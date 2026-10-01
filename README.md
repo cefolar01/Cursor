@@ -13,24 +13,22 @@ Cloud Agent and local work use this host stack only:
 - Go 1.22
 - **No Docker** (no daemon, Dockerfiles, or Compose)
 
-The rule file is always applied. Use it as a pre-flight checklist so releases:
-
 **Unattended email monitoring** (reusable pattern for Barb now, other agents later): [docs/agent-email-monitoring.md](docs/agent-email-monitoring.md). Barb durable Automation checklist: [docs/barb-email-automation-setup.md](docs/barb-email-automation-setup.md).
 
 ## How they execute
 
 | File | When it applies |
 | --- | --- |
-| [`.cursor/rules/aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) | Every Agent chat (`alwaysApply: true`) |
-| [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | Every Agent chat (`alwaysApply: true`) |
+| [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | Every Agent chat (`alwaysApply: true`) — Cursor Cloud + local deploy |
+| [`.cursor/rules/aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) | **Parked** (`alwaysApply: false`) until Rich re-enables AWS |
 
 | Handoff | From → To | What moves |
 |---------|-----------|------------|
 | Work packages | Barb → Dave | Buildable slices: problem, scope, actors, requirements, acceptance criteria, data-sensitivity notes |
 | Slack user-story tasks | Barb → Dave | Pick-up **list records** on **https://cardinalityproject.slack.com/lists/T0C37AFKSJE/F0C35F6198W** (Workspace **T0C37AFKSJE**, List ID **F0C35F6198W**)—never channel messages as the claimable task: As a… / I want… / So that…, acceptance criteria, links/refs to package detail (synthetic/redacted only). Optional brief channel notice pointing at the list record is OK. |
 | Test scenarios | Barb → Tony | Business-level **test scenarios on the user story** (list **F0C35F6198W**)—Tony develops validation **test cases** from those scenarios (not executable scripts from Barb) |
-| Deployable artifacts | Dave → Don | CI-green git SHA on **`main`** (after feature-branch merge + unit tests in **Childcare_Solution**) + immutable artifact (never `:latest`) |
-| Deploy evidence | Don → Tony | Verified serving version, health/soak proof, change record, rollback path |
+| Deployable artifacts | Dave → Don | CI-green git SHA on **Childcare_Solution** **`main`** (after feature-branch merge + unit tests) + immutable artifact (never `:latest`) |
+| Deploy evidence | Don → Tony | Verified serving version on **Cursor Cloud** (and/or designated local), health/smoke proof, change record, rollback path (AWS parked) |
 | Status / progress | All → Paul | Completions, blockers, decisions needed; Paul keeps the pipeline moving |
 | Clarification (pre-story) | Barb → **original requester** | Blocking acceptance/scope questions on a prospective user story go back to the **requester** (email)—**not** Paul as default. Hold WP / stories / Slack pick-ups until clarified (or Rich authorizes assumptions). Paul still owns approve → release **after** stories exist. |
 | Approved → release for execution | Paul → Dave | Paul monitors Slack list **F0C35F6198W** every **15 min**; when a task is **approved**, he **releases it for execution** (assigns Dave on that same list record—no second queue) and includes newly approved/released items in daily **project-solution** status |
@@ -48,7 +46,7 @@ Paul does not replace pipeline roles; he tracks risks/issues/ETC, polls list **F
 |------:|-------|------|-----------|--------|
 | 1 | Barb BA | Business Analyst | [`.cursor/rules/barb-ba.mdc`](.cursor/rules/barb-ba.mdc) | **Populated** |
 | 2 | Dave Dev | Developer | [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc) | **Populated** |
-| 3 | Don DevOp | DevOps (AWS) | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | **Populated** |
+| 3 | Don DevOp | DevOps (Cursor Cloud + local; AWS parked) | [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc) | **Populated** |
 | 4 | Tony Tester | Tester | [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc) | **Populated** |
 | — | Paul PM | Project Manager (PMP) | [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc) | **Populated** |
 | — | Team-Docs | Deliverable docs (proof / invoicing) | [`.cursor/rules/team-docs.mdc`](.cursor/rules/team-docs.mdc) | **Populated** |
@@ -63,15 +61,15 @@ Turns user docs/forms/process maps into **work packages** for Dave, **Slack user
 
 ### Dave Dev — [`.cursor/rules/dave-dev.mdc`](.cursor/rules/dave-dev.mdc)
 
-Implements Barb’s work packages and **approved** Slack **list** pick-ups on **F0C35F6198W** (workspace **T0C37AFKSJE**) in **https://github.com/cefolar01/Childcare_Solution** as **Express + SQLite** / **React + Vite** on **Node.js v22** / **npm 10** (Ubuntu 24.04; Python 3.12 / Go 1.22 available; **no Docker**). Takes **Paul’s assignments only after approved**. Develops each feature on a **new branch** in the Cursor **childcare_solution** cloud environment; after **unit tests pass**, merges to **`main`**; hands Don a **CI-green SHA on `main`** + immutable artifact (never `:latest`). Feasibility feedback to Barb; status to Paul; commits only when asked. Full rules in his rule file.
+Implements Barb’s work packages and **approved** Slack **list** pick-ups on **F0C35F6198W** (workspace **T0C37AFKSJE**) in **https://github.com/cefolar01/Childcare_Solution** (default branch **`main`**) as **Express + SQLite** / **React + Vite** on **Node.js v22** / **npm 10** (Ubuntu 24.04; Python 3.12 / Go 1.22 available; **no Docker**). Takes **Paul’s assignments only after approved**. Develops each feature on a **new branch** in the Cursor **childcare_solution** cloud environment; after **unit tests pass**, merges to **`main`**; hands Don a **CI-green SHA on Childcare_Solution `main`** + immutable artifact (never `:latest`). Feasibility feedback to Barb; status to Paul; commits only when asked. Full rules in his rule file.
 
 ### Don DevOp — [`.cursor/rules/don-devops.mdc`](.cursor/rules/don-devops.mdc)
 
-Deploys app and infra to **AWS** in default region **us-east-2** (console: **https://us-east-2.console.aws.amazon.com/console/home?region=us-east-2**; CLI/API still use `us-east-2`) under the [AWS Deployment Rules](.cursor/rules/aws-deployment.mdc) on **Ubuntu 24.04** with **Node.js v22** / **npm 10**, **Python 3.12**, and **Go 1.22** (**no Docker**): confirm account/env/role (and region) before mutate; plan-then-apply; immutable CI-green artifacts (AMI / Lambda / other CI IDs — never an image built with Docker on this machine); security guardrails on; rolling/blue-green/canary with rollback ready; hands **deploy evidence** to Tony. Agents call AWS through the SigV4 [AWS MCP Server](docs/aws-mcp-server.md) proxy in [`.cursor/mcp.json`](.cursor/mcp.json). Does not invent account IDs or credentials. Full rules live in those rule files—not duplicated here.
+Deploys and verifies **only** from **Childcare_Solution** **`main`** onto **Cursor Cloud** agent environments and **local servers** (**Ubuntu 24.04**; **Node.js v22** / **npm 10**; **Python 3.12**; **Go 1.22**; **no Docker**; Express + SQLite / React + Vite as Dave built). Confirms repo/branch/SHA, health/smoke proof, rollback notes, then hands **deploy evidence** to Tony. **AWS deploy/infra is parked** until Rich re-enables it ([`aws-deployment.mdc`](.cursor/rules/aws-deployment.mdc) inactive; historical us-east-2 / [AWS MCP Server](docs/aws-mcp-server.md) docs retained for later). Does not invent credentials or resume AWS work on his own. Full rules live in his rule file—not duplicated here.
 
 ### Tony Tester — [`.cursor/rules/tony-tester.mdc`](.cursor/rules/tony-tester.mdc)
 
-Works from tasks on Slack list **F0C35F6198W** (workspace **T0C37AFKSJE**—same list Barb’s pick-ups and Paul’s approval use). Uses the **test scenario on the user story** to develop granular **test cases** (tasks associated to that main story on the same list—no second queue), executes them against Don’s **deployed** environment using deploy evidence, and records discrete **pass / fail / block**—covering happy path and anomaly paths—**before** sign-off or closing the Slack story as complete. Synthetic/redacted data only. Full rules in his rule file.
+Works from tasks on Slack list **F0C35F6198W** (workspace **T0C37AFKSJE**—same list Barb’s pick-ups and Paul’s approval use). Uses the **test scenario on the user story** to develop granular **test cases** (tasks associated to that main story on the same list—no second queue), executes them on Don’s **Cursor Cloud** agent machine / **Try Live** (serving **Childcare_Solution** **`main`**—not AWS), and records discrete **pass / fail / block**—covering happy path and anomaly paths—**before** sign-off or closing the Slack story as complete. Synthetic/redacted data only. Full rules in his rule file.
 
 ### Paul PM — [`.cursor/rules/paul-pm.mdc`](.cursor/rules/paul-pm.mdc)
 

@@ -1,5 +1,7 @@
 # AWS MCP Server (SigV4)
 
+> **Note (2026-09-30):** Don’s active deploy scope is **Cursor Cloud + local** only; AWS deploy/infra is **parked** until Rich re-enables it. This MCP doc remains for tooling/reference when AWS work returns—do not treat it as authorization for Don to mutate AWS now.
+
 Agents reach AWS through the managed **AWS MCP Server**, fronted by the local **MCP Proxy for AWS**. The proxy signs requests with the AWS credential chain already on the machine. No access keys, session tokens, or account IDs belong in git.
 
 This replaces the deprecated self-hosted package `awslabs.aws-api-mcp-server`.
